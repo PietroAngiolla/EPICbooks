@@ -73,9 +73,37 @@ nav .container-fluid{
 
 .card{
     padding: 0;
+    box-shadow: 10px 6px 10px black;
+    transition-duration: 0.5s;
+}
+
+.card:hover{
+    transform: scale(1.1, 1.1) translate(-5%, 0);
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .card-img-top{
-    height: 300px;
+    height: 250px;
 }
+
+.card-body{
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#shop-btn, #skip-btn{
+    background-color: transparent;
+    color: black;
+    border-color: black;
+    margin: 5px, 0;
+}
+
+#shop-btn:hover, #skip-btn:hover{
+    background-color: black;
+    color: white;
+}
+
 

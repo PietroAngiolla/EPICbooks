@@ -12,9 +12,10 @@ async function getAllBooks() {
                 <img src= ${element.img} class="card-img-top" alt = "title: ${element.title}">
                 <div class="card-body">
                     <h5 class="card-title">Title: ${element.title}</h5>
-                    <p class="card-text">Genre: ${element.category}</p>
-                    <p class="card-text">Price: ${element.price}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <p class="card-text genre">Genre: ${element.category}</p>
+                    <p class="card-text price">Price: ${element.price}</p>
+                    <a onclick="addToSC(event)" class="btn btn-primary" id="shop-btn">Add to Shopping Cart</a>
+                    <a href="#" class="btn btn-primary" id="skip-btn">Skip Book</a>
                 </div>
             </div>`
             bookList.innerHTML+=cardHTML
@@ -26,3 +27,49 @@ async function getAllBooks() {
 }
 
 getAllBooks()
+
+function addToSC(event) {
+    const button=event.target;
+    console.log(button)
+    const card=button.closest(".card")
+    console.log(card)
+    const price=card.querySelector(".price")
+    console.log(price)
+    button.remove()
+    const addedToSC= `<p>ADDED TO SHOPPING CART</p>`
+    price.insertAdjacentHTML("afterend", addedToSC)
+}
+
+const form=document.querySelector("form")
+form.addEventListener("submit", function(event){
+    event.preventDefault()
+    const searchValue=document.getElementById("search-bar").value.toString()
+    console.log(searchValue)
+    const cards=document.querySelectorAll(".card")
+    console.log(cards)
+    let titleArray=[]
+    console.log(titleArray)
+    cards.forEach(card =>{
+        const cardBody=card.children[1]
+        const bookTitle=cardBody.querySelector(".card-title").innerHTML
+        titleArray.push(bookTitle)
+        console.log(bookTitle)
+    })
+    console.log(titleArray)
+    const searchResult=titleArray.filter(function(element){
+        return element.includes(searchValue)
+    })
+    console.log(searchResult)
+    let cardsArray=[]
+    const row=document.querySelector(".row")
+    const cardsHTML=Array.from(cards).map(el => el.outerHTML)
+    console.log(cardsHTML)
+    cards.forEach(card=>{
+        card.remove()
+    })
+    cards.forEach(card =>{
+        if (searchResult.includes(card.children[1].querySelector(".card-title").innerHTML)){
+            row.appendChild(card)
+        }
+    })
+})
