@@ -15,7 +15,7 @@ async function getAllBooks() {
                     <p class="card-text genre">Genre: ${element.category}</p>
                     <p class="card-text price">Price: ${element.price}</p>
                     <a onclick="addToSC(event)" class="btn btn-primary" id="shop-btn">Add to Shopping Cart</a>
-                    <a href="#" class="btn btn-primary" id="skip-btn">Skip Book</a>
+                    <a onclick="skipBook(event)" class="btn btn-primary skipbtn" id="skip-btn">Skip Book</a>
                 </div>
             </div>`
             bookList.innerHTML+=cardHTML
@@ -32,12 +32,14 @@ function addToSC(event) {
     const button=event.target;
     console.log(button)
     const card=button.closest(".card")
+    const skipButton=card.querySelector(".skipbtn")
     console.log(card)
     const price=card.querySelector(".price")
     console.log(price)
     button.remove()
     const addedToSC= `<p>ADDED TO SHOPPING CART</p>`
     price.insertAdjacentHTML("afterend", addedToSC)
+    skipButton.remove()
 }
 
 const form=document.querySelector("form")
@@ -73,3 +75,9 @@ form.addEventListener("submit", function(event){
         }
     })
 })
+
+function skipBook(event) {
+    const button=event.target;
+    const card=button.closest(".card")
+    card.style.display="none"
+}
