@@ -16,6 +16,7 @@ async function getAllBooks() {
                     <p class="card-text price">Price: ${element.price}</p>
                     <a onclick="addToSC(event)" class="btn btn-primary" id="shop-btn">Add to Shopping Cart</a>
                     <a onclick="skipBook(event)" class="btn btn-primary skipbtn" id="skip-btn">Skip Book</a>
+                    <a onclick="#" class="btn btn-primary" id="detail-btn">Details</a>
                 </div>
             </div>`
             bookList.innerHTML+=cardHTML

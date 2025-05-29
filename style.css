@@ -94,14 +94,14 @@ nav .container-fluid{
     gap: 7px;
 }
 
-#shop-btn, #skip-btn{
+#shop-btn, #skip-btn, #detail-btn{
     background-color: transparent;
     color: black;
     border-color: black;
     margin: 5px, 0;
 }
 
-#shop-btn:hover, #skip-btn:hover{
+#shop-btn:hover, #skip-btn:hover, #detail-btn:hover{
     background-color: black;
     color: white;
 }
