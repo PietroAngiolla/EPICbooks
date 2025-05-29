@@ -8,7 +8,7 @@ async function getAllBooks() {
         const bookList = document.querySelector(".row")
         json.forEach(element => {
             const cardHTML =`
-            <div class="card col-xs-6 col-md-3 col-lg-2" style="width: 18rem;">
+            <div class="card col-xs-6 col-md-3 col-lg-2" id=${element.asin} style="width: 18rem;">
                 <img src= ${element.img} class="card-img-top" alt = "title: ${element.title}">
                 <div class="card-body">
                     <h5 class="card-title">Title: ${element.title}</h5>
@@ -16,7 +16,7 @@ async function getAllBooks() {
                     <p class="card-text price">Price: ${element.price}</p>
                     <a onclick="addToSC(event)" class="btn btn-primary" id="shop-btn">Add to Shopping Cart</a>
                     <a onclick="skipBook(event)" class="btn btn-primary skipbtn" id="skip-btn">Skip Book</a>
-                    <a onclick="#" class="btn btn-primary" id="detail-btn">Details</a>
+                    <a href="/Details/details.html?id=${element.asin}" class="btn btn-primary" id="detail-btn">Details</a>
                 </div>
             </div>`
             bookList.innerHTML+=cardHTML
